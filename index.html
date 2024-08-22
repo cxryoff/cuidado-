@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('/mnt/data/fundo.jpg');
+            background-image: url('./fundo.jpg');
             background-size: cover;
             color: white;
             margin: 0;
@@ -96,10 +96,10 @@
         <div class="quiz-question hidden">
             <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
             <ul class="quiz-options">
-                <li><input type="radio" name="q2" value="errado"> 3 horas em pé no metrô</li>
+                <li><input type="radio" name="q2" value="correto"> 3 horas em pé no metrô</li>
                 <li><input type="radio" name="q2" value="errado"> 2 horas</li>
                 <li><input type="radio" name="q2" value="errado"> 1 hora</li>
-                <li><input type="radio" name="q2" value="correto"> 30 minutos 👀</li>
+                <li><input type="radio" name="q2" value="errado"> 30 minutos 👀</li>
             </ul>
             <button class="submit-button" onclick="nextQuestion('q2')">Próxima</button>
         </div>
@@ -137,7 +137,7 @@
             <h2>Resultado</h2>
             <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 3 horas em pé no metrô!</p>
             <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
-            <img src="/mnt/data/fundo.jpg" alt="Imagem engraçada">
+            <img src="./image.jpeg" alt="Imagem engraçada">
         </div>
     </div>
 
@@ -160,12 +160,26 @@
         function nextQuestion(current) {
             const currentQuestion = document.querySelector(`input[name="${current}"]:checked`);
             if (currentQuestion) {
-                const nextQuestion = currentQuestion.closest('.quiz-question').nextElementSibling;
-                currentQuestion.closest('.quiz-question').classList.add('hidden');
-                nextQuestion.classList.remove('hidden');
+                if (currentQuestion.value === "errado") {
+                    alert("Resposta errada! Você vai ter que começar tudo de novo.");
+                    resetQuiz();
+                } else {
+                    const nextQuestion = currentQuestion.closest('.quiz-question').nextElementSibling;
+                    currentQuestion.closest('.quiz-question').classList.add('hidden');
+                    nextQuestion.classList.remove('hidden');
+                }
             } else {
                 alert("Por favor, selecione uma opção.");
             }
+        }
+
+        function resetQuiz() {
+            document.querySelectorAll('.quiz-question').forEach(question => {
+                question.classList.add('hidden');
+            });
+            document.querySelector('.quiz-question').classList.remove('hidden');
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+            window.scrollTo(0, 0);
         }
 
         function showResults() {
