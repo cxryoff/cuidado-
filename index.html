@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Quiz Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        .quiz-question {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .quiz-options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .quiz-options li {
+                margin-top: 10px;
+            }
+
+        .submit-button {
+            background-color: #2e8b57;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nosso Quiz Especial</h1>
+
+    <div class="quiz-question">
+        <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
+        <ul class="quiz-options">
+            <li><input type="radio" name="q1" value="errado"> 8 meses</li>
+            <li><input type="radio" name="q1" value="errado"> 11 meses</li>
+            <li><input type="radio" name="q1" value="correto"> 10 meses</li>
+            <li><input type="radio" name="q1" value="errado"> 7 meses e fé</li>
+        </ul>
+    </div>
+
+    <div class="quiz-question">
+        <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
+        <ul class="quiz-options">
+            <li><input type="radio" name="q2" value="errado"> 3 horas em pé no metrô</li>
+            <li><input type="radio" name="q2" value="errado"> 2 horas</li>
+            <li><input type="radio" name="q2" value="errado"> 1 hora</li>
+            <li><input type="radio" name="q2" value="correto"> 30 minutos 👀</li>
+        </ul>
+    </div>
+
+    <button class="submit-button" onclick="showResults()">Finalizar</button>
+
+    <div id="result" class="hidden">
+        <h2>Resultado</h2>
+        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 3 horas em pé no metrô!</p>
+        <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
+        <img src="/path/to/uploaded/image.jpg" alt="Imagem engraçada">
+    </div>
+
+    <script>
+        function showResults() {
+            document.getElementById('result').classList.remove('hidden');
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    </script>
+</body>
+</html>
